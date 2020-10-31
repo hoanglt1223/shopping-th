@@ -1,8 +1,3 @@
-// Copyright IBM Corp. 2020. All Rights Reserved.
-// Node module: loopback4-example-shopping
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {UserService} from '@loopback/authentication';
 import {inject} from '@loopback/context';
 import {repository} from '@loopback/repository';
@@ -57,7 +52,7 @@ export class UserManagementService implements UserService<User, Credentials> {
 
   convertToUserProfile(user: User): UserProfile {
     // since first name and lastName are optional, no error is thrown if not provided
-    let userName = '1';
+    let userName = '';
     if (user.firstName) userName = `${user.firstName}`;
     if (user.lastName)
       userName = user.firstName

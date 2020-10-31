@@ -1,11 +1,6 @@
-// Copyright IBM Corp. 2019,2020. All Rights Reserved.
-// Node module: loopback4-example-shopping
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {inject} from '@loopback/core';
 import {DefaultCrudRepository} from '@loopback/repository';
-import {MongodbDataSource} from '../datasources';
+import {MongoDataSource} from '../datasources';
 import {UserCredentials, UserCredentialsRelations} from '../models';
 
 export class UserCredentialsRepository extends DefaultCrudRepository<
@@ -13,7 +8,7 @@ export class UserCredentialsRepository extends DefaultCrudRepository<
   typeof UserCredentials.prototype.id,
   UserCredentialsRelations
 > {
-  constructor(@inject('datasources.mongodb') dataSource: MongodbDataSource) {
+  constructor(@inject('datasources.mongo') dataSource: MongoDataSource) {
     super(UserCredentials, dataSource);
   }
 }

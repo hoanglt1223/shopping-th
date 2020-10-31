@@ -1,17 +1,11 @@
-// Copyright IBM Corp. 2019,2020. All Rights Reserved.
-// Node module: loopback4-example-shopping
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {Getter, inject} from '@loopback/core';
 import {
   DefaultCrudRepository,
   HasManyRepositoryFactory,
   HasOneRepositoryFactory,
-
-  repository
+  repository,
 } from '@loopback/repository';
-import {MongodbDataSource} from '../datasources';
+import {MongoDataSource} from '../datasources';
 import {Order, User, UserCredentials} from '../models';
 import {OrderRepository} from './order.repository';
 import {UserCredentialsRepository} from './user-credentials.repository';
@@ -33,7 +27,7 @@ export class UserRepository extends DefaultCrudRepository<
   >;
 
   constructor(
-    @inject('datasources.mongodb') dataSource: MongodbDataSource,
+    @inject('datasources.mongodb') dataSource: MongoDataSource,
     @repository(OrderRepository) protected orderRepository: OrderRepository,
     @repository.getter('UserCredentialsRepository')
     protected userCredentialsRepositoryGetter: Getter<

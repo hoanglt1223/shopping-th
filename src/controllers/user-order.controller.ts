@@ -1,3 +1,5 @@
+import {authenticate} from '@loopback/authentication';
+import {authorize} from '@loopback/authorization';
 import {
   Count,
   CountSchema,
@@ -8,69 +10,83 @@ import {
 import {
   del,
   get,
-  getModelSchemaRef,
+  getFilterSchemaFor,
   getWhereSchemaFor,
+  HttpErrors,
   param,
   patch,
   post,
   requestBody,
 } from '@loopback/rest';
-import {
-  User,
-  Order,
-} from '../models';
+import {Order} from '../models';
 import {UserRepository} from '../repositories';
+import {basicAuthorization} from '../services';
+import {OPERATION_SECURITY_SPEC} from '../utils/security-spec';
 
+/**
+ * Controller for User's Orders
+ */
 export class UserOrderController {
   constructor(
-    @repository(UserRepository) protected userRepository: UserRepository,
-  ) { }
+    @repository(UserRepository)
+    protected userRepo: UserRepository,
+  ) {}
 
-  @get('/users/{id}/orders', {
+  /**
+   * Create or update the orders for a given user
+   * @param userId User id
+   * @param cart Shopping cart
+   */
+  @post('/users/{userId}/orders', {
+    security: OPERATION_SECURITY_SPEC,
     responses: {
       '200': {
-        description: 'Array of User has many Order',
+        description: 'User.Order model instance',
+        content: {'application/json': {schema: {'x-ts-type': Order}}},
+      },
+    },
+  })
+  @authenticate('jwt')
+  @authorize({allowedRoles: ['customer'], voters: [basicAuthorization]})
+  async createOrder(
+    @param.path.string('userId') userId: string,
+    @requestBody() order: Order,
+  ): Promise<Order> {
+    order.date = new Date().toString();
+    return this.userRepo
+      .orders(userId)
+      .create(order)
+      .catch(e => {
+        throw HttpErrors(400);
+      });
+  }
+
+  @get('/users/{userId}/orders', {
+    security: OPERATION_SECURITY_SPEC,
+    responses: {
+      '200': {
+        description: "Array of User's Orders",
         content: {
           'application/json': {
-            schema: {type: 'array', items: getModelSchemaRef(Order)},
+            schema: {type: 'array', items: {'x-ts-type': Order}},
           },
         },
       },
     },
   })
-  async find(
-    @param.path.string('id') id: string,
-    @param.query.object('filter') filter?: Filter<Order>,
+  @authenticate('jwt')
+  @authorize({allowedRoles: ['customer'], voters: [basicAuthorization]})
+  async findOrders(
+    @param.path.string('userId') userId: string,
+    @param.query.object('filter', getFilterSchemaFor(Order))
+    filter?: Filter<Order>,
   ): Promise<Order[]> {
-    return this.userRepository.orders(id).find(filter);
+    const orders = await this.userRepo.orders(userId).find(filter);
+    return orders;
   }
 
-  @post('/users/{id}/orders', {
-    responses: {
-      '200': {
-        description: 'User model instance',
-        content: {'application/json': {schema: getModelSchemaRef(Order)}},
-      },
-    },
-  })
-  async create(
-    @param.path.string('id') id: typeof User.prototype.id,
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(Order, {
-            title: 'NewOrderInUser',
-            exclude: ['id'],
-            optional: ['userId']
-          }),
-        },
-      },
-    }) order: Omit<Order, 'id'>,
-  ): Promise<Order> {
-    return this.userRepository.orders(id).create(order);
-  }
-
-  @patch('/users/{id}/orders', {
+  @patch('/users/{userId}/orders', {
+    security: OPERATION_SECURITY_SPEC,
     responses: {
       '200': {
         description: 'User.Order PATCH success count',
@@ -78,22 +94,18 @@ export class UserOrderController {
       },
     },
   })
-  async patch(
-    @param.path.string('id') id: string,
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(Order, {partial: true}),
-        },
-      },
-    })
-    order: Partial<Order>,
+  @authenticate('jwt')
+  @authorize({allowedRoles: ['customer'], voters: [basicAuthorization]})
+  async patchOrders(
+    @param.path.string('userId') userId: string,
+    @requestBody() order: Partial<Order>,
     @param.query.object('where', getWhereSchemaFor(Order)) where?: Where<Order>,
   ): Promise<Count> {
-    return this.userRepository.orders(id).patch(order, where);
+    return this.userRepo.orders(userId).patch(order, where);
   }
 
-  @del('/users/{id}/orders', {
+  @del('/users/{userId}/orders', {
+    security: OPERATION_SECURITY_SPEC,
     responses: {
       '200': {
         description: 'User.Order DELETE success count',
@@ -101,10 +113,12 @@ export class UserOrderController {
       },
     },
   })
-  async delete(
-    @param.path.string('id') id: string,
+  @authenticate('jwt')
+  @authorize({allowedRoles: ['customer'], voters: [basicAuthorization]})
+  async deleteOrders(
+    @param.path.string('userId') userId: string,
     @param.query.object('where', getWhereSchemaFor(Order)) where?: Where<Order>,
   ): Promise<Count> {
-    return this.userRepository.orders(id).delete(where);
+    return this.userRepo.orders(userId).delete(where);
   }
 }

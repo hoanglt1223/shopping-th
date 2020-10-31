@@ -1,42 +1,31 @@
-// Copyright IBM Corp. 2019,2020. All Rights Reserved.
-// Node module: loopback4-example-shopping
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {AuthenticationComponent} from '@loopback/authentication';
 import {
   JWTAuthenticationComponent,
-  TokenServiceBindings
+  TokenServiceBindings,
 } from '@loopback/authentication-jwt';
 import {AuthorizationComponent} from '@loopback/authorization';
 import {BootMixin} from '@loopback/boot';
 import {
   ApplicationConfig,
   BindingKey,
-  createBindingFromClass
+  createBindingFromClass,
 } from '@loopback/core';
 import {RepositoryMixin, SchemaMigrationOptions} from '@loopback/repository';
 import {RestApplication} from '@loopback/rest';
 import {
   RestExplorerBindings,
-  RestExplorerComponent
+  RestExplorerComponent,
 } from '@loopback/rest-explorer';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {PasswordHasherBindings, UserServiceBindings} from './keys';
-import {
-  CartRepository, OrderRepository,
-  ProductRepository,
-
-  UserRepository
-} from './repositories';
 import {MyAuthenticationSequence} from './sequence';
 import {
   BcryptHasher,
-
-  JWTService, SecuritySpecEnhancer, UserManagementService
+  JWTService,
+  SecuritySpecEnhancer,
+  UserManagementService,
 } from './services';
-import YAML = require('yaml');
 
 /**
  * Information from package.json
@@ -116,45 +105,16 @@ export class ShoppingApplication extends BootMixin(
   async migrateSchema(options?: SchemaMigrationOptions): Promise<void> {
     await super.migrateSchema(options);
 
-    // Pre-populate products
-    const productRepo = await this.getRepository(ProductRepository);
-    await productRepo.deleteAll();
-    // const productsDir = path.join(__dirname, '../fixtures/products');
-    // const productFiles = fs.readdirSync(productsDir);
+    // const productRepo = await this.getRepository(ProductRepository);
+    // await productRepo.deleteAll();
 
-    // for (const file of productFiles) {
-    //   if (file.endsWith('.yml')) {
-    //     const productFile = path.join(productsDir, file);
-    //     const yamlString = fs.readFileSync(productFile, 'utf8');
-    //     const product = YAML.parse(yamlString);
-    //     await productRepo.create(product);
-    //   }
-    // }
+    // const userRepo = await this.getRepository(UserRepository);
+    // await userRepo.deleteAll();
 
-    // Pre-populate users
-    const userRepo = await this.getRepository(UserRepository);
-    await userRepo.deleteAll();
-    // const usersDir = path.join(__dirname, '../fixtures/users');
-    // const userFiles = fs.readdirSync(usersDir);
+    // const cartRepo = await this.getRepository(ShoppingCartRepository);
+    // await cartRepo.deleteAll();
 
-    // for (const file of userFiles) {
-    //   if (file.endsWith('.yml')) {
-    //     const userFile = path.join(usersDir, file);
-    //     const yamlString = YAML.parse(fs.readFileSync(userFile, 'utf8'));
-    //     const userWithPassword = new UserWithPassword(yamlString);
-    //     const userManagementService = await this.get<UserManagementService>(
-    //       UserServiceBindings.USER_SERVICE,
-    //     );
-    //     await userManagementService.createUser(userWithPassword);
-    //   }
-    // }
-
-    // Delete existing shopping carts
-    const cartRepo = await this.getRepository(CartRepository);
-    await cartRepo.deleteAll();
-
-    // Delete existing orders
-    const orderRepo = await this.getRepository(OrderRepository);
-    await orderRepo.deleteAll();
+    // const orderRepo = await this.getRepository(OrderRepository);
+    // await orderRepo.deleteAll();
   }
 }

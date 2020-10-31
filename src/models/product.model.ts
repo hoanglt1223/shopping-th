@@ -7,19 +7,24 @@ export class Product extends Entity {
     id: true,
     generated: true,
   })
-  ID?: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  price: string;
+  productId?: string;
 
   @property({
     type: 'string',
     required: true,
   })
   name: string;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  price: number;
+
+  @property({
+    type: 'string',
+  })
+  image?: string;
 
   @property({
     type: 'string',
@@ -29,12 +34,7 @@ export class Product extends Entity {
   @property({
     type: 'string',
   })
-  orderId?: string;
-
-  @property({
-    type: 'string',
-  })
-  cartId?: string;
+  details?: string;
 
   constructor(data?: Partial<Product>) {
     super(data);

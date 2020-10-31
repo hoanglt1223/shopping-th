@@ -92,10 +92,8 @@ export class UserManagementController {
       return await this.userManagementService.createUser(newUserRequest);
     } catch (error) {
       // MongoError 11000 duplicate key
-      if (error.code === 11000) {
-        throw new HttpErrors.Conflict(
-          'Email or Username value is already taken',
-        );
+      if (error.code === 11000 && error.errmsg.includes('index: uniqueEmail')) {
+        throw new HttpErrors.Conflict('Email value is already taken');
       } else {
         throw error;
       }

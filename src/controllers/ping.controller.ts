@@ -1,5 +1,5 @@
-import {Request, RestBindings, get, ResponseObject} from '@loopback/rest';
-import {inject} from '@loopback/core';
+import {inject} from '@loopback/context';
+import {get, Request, ResponseObject, RestBindings} from '@loopback/rest';
 
 /**
  * OpenAPI response for ping()
@@ -10,7 +10,6 @@ const PING_RESPONSE: ResponseObject = {
     'application/json': {
       schema: {
         type: 'object',
-        title: 'PingResponse',
         properties: {
           greeting: {type: 'string'},
           date: {type: 'string'},
@@ -20,7 +19,7 @@ const PING_RESPONSE: ResponseObject = {
             properties: {
               'Content-Type': {type: 'string'},
             },
-            additionalProperties: true,
+            additionalProperties: false,
           },
         },
       },

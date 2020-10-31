@@ -1,13 +1,8 @@
-// Copyright IBM Corp. 2019,2020. All Rights Reserved.
-// Node module: loopback4-example-shopping
-// This file is licensed under the MIT License.
-// License text available at https://opensource.org/licenses/MIT
-
 import {
   AuthenticateFn,
   AuthenticationBindings,
   AUTHENTICATION_STRATEGY_NOT_FOUND,
-  USER_PROFILE_NOT_FOUND
+  USER_PROFILE_NOT_FOUND,
 } from '@loopback/authentication';
 import {inject} from '@loopback/context';
 import {
@@ -19,7 +14,7 @@ import {
   RequestContext,
   RestBindings,
   Send,
-  SequenceHandler
+  SequenceHandler,
 } from '@loopback/rest';
 
 const SequenceActions = RestBindings.SequenceActions;
