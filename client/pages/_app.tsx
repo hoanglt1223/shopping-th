@@ -1,11 +1,11 @@
 import { Provider } from 'mobx-react'
 import App from 'next/app'
+import '../styles.css';
 import Head from 'next/head'
 import React from 'react'
 import { appWithTranslation } from '../i18n'
-import Link from 'next/link';
 import { Router } from 'i18n'
-import whyDidYouRender from '@welldone-software/why-did-you-render'
+// import whyDidYouRender from '@welldone-software/why-did-you-render'
 import { ToastContainer } from 'react-toastify'
 import initializeStore from '../stores/rootStore'
 import routes from '../routes'
