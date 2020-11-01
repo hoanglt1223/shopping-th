@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import useStore from 'utils/useStore'
 
 const IndexPage = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
   const { userStore } = useStore()
   return (
     <div>

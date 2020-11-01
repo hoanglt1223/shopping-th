@@ -31,13 +31,13 @@ class AppWrapper extends App {
         <title>Welcome to Home</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
-        <h1>Simplest Shop</h1>
-        <h2>Proudly using Next.js, Mongodb, Mobx, Loopback4, Typescript and deployed with Heroku</h2>
+        {/* <h1>Simplest Shop</h1>
+        <h2>Proudly using Next.js, Mongodb, Mobx, Loopback4, Typescript and deployed with Heroku</h2> */}
         <Component {...pageProps} />
         <ToastContainer />
         <hr></hr>
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleSignUp}>SignUp</button>
+        {/* <button onClick={handleLogin}>Login</button>
+        <button onClick={handleSignUp}>SignUp</button> */}
       </Provider>
     )
   }
