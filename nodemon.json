@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "client",
+    "server/src"
+  ],
+  "ignore": [
+    "server/dist/*"
+  ],
+  "ext": "ts",
+  "exec": "npm start"
+}

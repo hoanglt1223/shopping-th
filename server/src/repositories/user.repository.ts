@@ -27,7 +27,7 @@ export class UserRepository extends DefaultCrudRepository<
   >;
 
   constructor(
-    @inject('datasources.mongodb') dataSource: MongoDataSource,
+    @inject('datasources.mongo') dataSource: MongoDataSource,
     @repository(OrderRepository) protected orderRepository: OrderRepository,
     @repository.getter('UserCredentialsRepository')
     protected userCredentialsRepositoryGetter: Getter<
