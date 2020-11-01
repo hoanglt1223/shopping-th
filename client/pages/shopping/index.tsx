@@ -12,6 +12,7 @@ const ShopPage: NextPage = () => {
         <h1>Shopping Cart</h1>
         <Cart>
           <CartSummary />
+          <hr/>
           <Products />
         </Cart>
       </div>

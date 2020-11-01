@@ -38,10 +38,10 @@ const CartSummary = () => {
   return (
     <form onSubmit={handleCheckout}>
       <h2>Cart summary</h2>
-      <p >
+      <p>
         <strong>Number of Items:</strong> {cartCount}
       </p>
-      <p >
+      <p>
         <strong>Total:</strong> {formattedTotalPrice}
       </p>
       <button

@@ -33,7 +33,6 @@ class AppWrapper extends App {
         <button onClick={()=>Router.push(routes.shop.value)}>Shop</button>
         <button onClick={()=>Router.push(routes.api.value)}>Api</button>
         </div>
-
       </Provider>
     )
   }
