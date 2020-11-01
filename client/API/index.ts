@@ -18,7 +18,7 @@ export function errorHandler(error: IServerError) {
   switch (error.statusCode) {
     case 401:
       {
-        if (Router.pathname.includes('extranet') && error.message === 'Error verifying token : jwt expired') {
+        if ( error.message === 'Error verifying token : jwt expired') {
           setAccessToken('')
           Router.push(routes.login.value)
           Router.reload()

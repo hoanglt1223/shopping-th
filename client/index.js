@@ -15,6 +15,6 @@ module.exports = async function({
   server.get('*', (req, res) => handle(req, res));
   server.listen(port, err => {
     if (err) throw err;
-    console.log(`> Ready on port: ${port}`);
+    console.log(`> Ready on port: http://localhost:${port}`);
   });
 };

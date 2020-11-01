@@ -1,6 +1,9 @@
 const routes = {
   login: {
     value: '/login'
+  },
+  signUp: {
+    value: '/sign-up'
   }
 }
 
