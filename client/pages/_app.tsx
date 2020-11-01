@@ -29,10 +29,11 @@ class AppWrapper extends App {
         <Component {...pageProps} />
         <div>
           
-        <button onClick={()=>Router.push(routes.value)}>Home</button>
+        {/* <button onClick={()=>Router.push(routes.value)}>Home</button> */}
         <button onClick={()=>Router.push(routes.login.value)}>Login</button>
         <button onClick={()=>Router.push(routes.signUp.value)}>SignUp</button>
         <button onClick={()=>Router.push(routes.shop.value)}>Shop</button>
+        <button onClick={()=>Router.push(routes.api.value)}>Api</button>
         </div>
 
       </Provider>

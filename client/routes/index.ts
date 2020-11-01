@@ -1,5 +1,8 @@
 const routes = {
   value: '/',
+  api: {
+    value: '/api'
+  },
   login: {
     value: '/login'
   },
