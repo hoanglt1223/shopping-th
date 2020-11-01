@@ -1,4 +1,4 @@
-import products from '../data/products.json'
+import products from '../mockData/products.json'
 import { useShoppingCart, formatCurrencyString } from 'use-shopping-cart'
 
 const Products = () => {

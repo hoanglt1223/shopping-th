@@ -5,6 +5,9 @@ const routes = {
   },
   signUp: {
     value: '/sign-up'
+  },
+  shop: {
+    value: '/shopping'
   }
 }
 

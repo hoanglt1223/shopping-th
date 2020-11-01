@@ -5,7 +5,7 @@ import Cart from '../../components/Cart'
 import CartSummary from '../../components/CartSummary'
 import Products from '../../components/Products'
 
-const DonatePage: NextPage = () => {
+const ShopPage: NextPage = () => {
   return (
     <Layout>
       <div className="page-container">
@@ -19,4 +19,4 @@ const DonatePage: NextPage = () => {
   )
 }
 
-export default DonatePage
+export default ShopPage
