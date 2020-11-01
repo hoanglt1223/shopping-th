@@ -1,0 +1,34 @@
+@mixin text-small {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+}
+
+@mixin text-medium {
+  font-size: $font-size-medium;
+  line-height: $line-height-medium;
+}
+
+@mixin text-large {
+  font-size: $font-size-large;
+  line-height: $line-height-large;
+}
+
+@mixin text-extra-large {
+  font-size: $font-size-extra-large;
+  line-height: $line-height-extra-large;
+}
+
+@mixin text-xx-large {
+  font-size: $font-size-xx-large;
+  line-height: $line-height-xx-large;
+}
+
+@mixin text-mobile-large {
+  font-size: $font-size-mobile-large;
+  line-height: $line-height-mobile-large;
+}
+
+@mixin web-font-normal {
+  font-family: $web-font-family;
+  font-style: normal;
+}

@@ -1,6 +1,5 @@
 import {SchemaObject} from '@loopback/rest';
 
-// TODO(jannyHou): This should be moved to @loopback/authentication
 export const UserProfileSchema = {
   type: 'object',
   required: ['id'],
@@ -11,7 +10,6 @@ export const UserProfileSchema = {
   },
 };
 
-// TODO(jannyHou): This is a workaround to manually
 // describe the request body of 'Users/login'.
 // We should either create a Credential model, or
 // infer the spec from User model

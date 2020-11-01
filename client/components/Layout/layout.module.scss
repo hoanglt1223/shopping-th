@@ -1,0 +1,11 @@
+@import '../../styles/globalStyles.scss';
+
+.layout {
+  display: grid;
+  grid-template-areas:
+    'sidebar header'
+    'sidebar main'
+    'sidebar main';
+  grid-template-columns: $side-bar-width auto;
+  grid-template-rows: $header-height auto;
+}

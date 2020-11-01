@@ -3,8 +3,7 @@ import App from 'next/app'
 import '../styles/styles.css';
 import Head from 'next/head'
 import React from 'react'
-import { appWithTranslation } from '../i18n'
-import { Router } from 'i18n'
+import { appWithTranslation, Router } from '../i18n'
 // import whyDidYouRender from '@welldone-software/why-did-you-render'
 import initializeStore from '../stores/rootStore'
 import routes from '../routes'
@@ -28,7 +27,6 @@ class AppWrapper extends App {
         <h2>Proudly using Next.js, Mongodb, Mobx, Loopback4, Typescript and deployed with Heroku</h2> */}
         <Component {...pageProps} />
         <div>
-          
         {/* <button onClick={()=>Router.push(routes.value)}>Home</button> */}
         <button onClick={()=>Router.push(routes.login.value)}>Login</button>
         <button onClick={()=>Router.push(routes.signUp.value)}>SignUp</button>

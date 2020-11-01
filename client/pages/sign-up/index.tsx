@@ -1,42 +1,23 @@
 import React, {useState} from 'react';
-import Router from 'next/router';
-import cookie from 'js-cookie';
+import useStores from 'utils/useStore';
 
-const Signup = () => {
-  const [signupError, setSignupError] = useState('');
+const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [address, setAddress] = useState('');
+  // TODO: sẽ làm xác nhận sau // const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const {userStore} = useStores()
   function handleSubmit(e: { preventDefault: () => void; }) {
     e.preventDefault();
-    fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data && data.error) {
-          setSignupError(data.message);
-        }
-        if (data && data.token) {
-          //set cookie
-          cookie.set('token', data.token, {expires: 2});
-          Router.push('/');
-        }
-      });
+    userStore.signUp({email,password})
   }
   return (
     <form onSubmit={handleSubmit}>
       <p>Sign Up</p>
       <label htmlFor="email">
-        email
+        email:
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -44,11 +25,10 @@ const Signup = () => {
           type="email"
         />
       </label>
-
       <br />
 
       <label htmlFor="password">
-        password
+        password:
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -56,13 +36,44 @@ const Signup = () => {
           type="password"
         />
       </label>
+      <br />
 
+      <label htmlFor="name">
+        name: 
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          name="name"
+          type="input"
+        />
+      </label>
+      <br />
+
+      <label htmlFor="password">
+        address
+        <input
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          name="address"
+          type="input"
+        />
+      </label>
+      <br />
+
+      <label htmlFor="password">
+        phone
+        <input
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          name="phoneNumber"
+          type="input"
+        />
+      </label>
       <br />
 
       <input type="submit" value="Submit" />
-      {signupError && <p style={{color: 'red'}}>{signupError}</p>}
     </form>
   );
 };
 
-export default Signup;
+export default SignUp;

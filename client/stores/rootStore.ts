@@ -1,24 +1,20 @@
-// import { useStaticRendering } from 'mobx-react'
 import UserStore from './userStore'
 
 const isServer = typeof window === 'undefined'
-// useStaticRendering(isServer)
 
 let store: {
-  // Intranet stores
   userStore: UserStore
 } | null = null
 
-export default function initializeStore() {
+export default function initializeStore(this: any) {
   if (isServer) {
     return {
-      userStore: new UserStore()
+      userStore: new UserStore(this)
     }
   }
   if (store === null) {
     store = {
-      // Intranet stores
-      userStore: new UserStore()
+      userStore: new UserStore(this)
     }
   }
 

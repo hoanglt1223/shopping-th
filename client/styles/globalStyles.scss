@@ -1,0 +1,160 @@
+@import './typography.scss';
+
+$primary-color-A: black;
+$secondary-color-B: white;
+$accent-color: #1e54b7;
+$negative-color: #d44333;
+$warning-color: #ffc043;
+$positive-color: #21a453;
+$primary-blue-color: #276ef1;
+$primary-vsm-color: #0a8080;
+$sub-gray-color: #afafaf;
+$light-gray-color: #757575;
+$white-background-color: #f6f6f6;
+$dark-gray-color: #333333;
+$background-light-accent: #edf3fd;
+$primary-background-color: #ccc;
+$online-border-color: #9ee2b8;
+$expired-border-color: #ecaca5;
+$inputError-background-color: #fceaea;
+$schedule-border-color: #9fbff8;
+$content-color: #997328;
+$description-color: #777777;
+$searchInput-border-color: #5a90f4;
+$selectedContainer-vsm-border-color: #08b3b3;
+$wrapper-box-shadow-color: rgba(162, 162, 162, 0.5);
+$container-background-color: rgba(152, 200, 255, 0.1);
+$categoryTab-border-color: rgba(224, 224, 224, 0.1);
+
+$line-color: #e2e2e2;
+$text-color: #1f1f1f;
+
+$header-height: 80px;
+$side-bar-width: 260px;
+$footer-side-bar-height: 50px;
+
+// FONTS
+$font-family: 'Inter', 'Segoe UI Regular WestEuropean', 'Segoe UI';
+$web-font-family-header: 'ElleFutura';
+$web-font-family: 'Open Sans', sans-serif;
+
+$font-size-small: 12px;
+$line-height-small: 14px;
+
+$font-size-medium: 14px;
+$line-height-medium: 16px;
+
+$font-size-large: 16px;
+$line-height-large: 20px;
+
+$font-size-extra-large: 20px;
+$line-height-extra-large: 24px;
+
+$font-size-xx-large: 24px;
+$line-height-xx-large: 28px;
+
+$font-size-mobile-large: 18px;
+$line-height-mobile-large: 24px;
+
+$font-size-header: 20px;
+$line-height-header: 28px;
+
+$font-size-jumbotron-x-small: 30px;
+$line-height-jumbotron-x-small: 42px;
+
+$font-size-jumbotron-small: 36px;
+$line-height-jumbotron-small: 48px;
+
+$font-size-jumbotron-medium: 40px;
+$line-height-jumbotron-medium: 54px;
+
+$font-size-jumbotron-large: 48px;
+$line-height-jumbotron-large: 65px;
+
+$input-height: 40px;
+$input-height-small: 32px;
+$input-border: 1px solid #e2e2e2;
+$input-border-radius: 4px;
+
+// web color
+$web-primary-color: #e06a8d;
+$web-color-border: #e0e0e0;
+$web-color-black: #000000;
+$web-color-maire-black: #11110f;
+$web-color-white: #ffffff;
+$web-color-orange: #fcae02;
+$web-color-supernova-orange: #ffbb26;
+$web-color-green: #7dce42;
+$web-color-blue: #002f79;
+$web-color-cobalt-blue: #0848ac;
+$web-color-gray: #1f1f1f;
+$web-color-whisper-gray: #eeeeee;
+$web-color-light-blue: #f5f9ff;
+$web-color-light-gray: #757575;
+$web-color-dark-gray: #414141;
+$web-color-dark-white: #f5f5f5;
+$web-color-light-cyan: #baf3f3;
+$web-color-light-cyan-1: #98c8ff;
+$web-color-red: #d62d2d;
+
+// Spaces
+$space-extra-small: 12px;
+$space-small: 16px;
+$space-medium: 24px;
+$space-large: 40px;
+//Border Radius
+$web-border-radius: 4px;
+// web box shadow
+$web-box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.12);
+
+// responsive size
+$desktop-screen: xl, lg, md;
+$mobile-screen: sm, esm;
+
+// mixin web responsive
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+
+    // width < 600px
+  }
+
+  @if $breakpoint==tablet {
+    @media only screen and (min-width: 600px) and (max-width: 992px) {
+      @content;
+    }
+
+    // 600px <= width < 992px
+  }
+
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 992px) and (max-width: 1200px) {
+      @content;
+    }
+
+    // 992px <= width < 1200px
+  }
+
+  @if $breakpoint==large-desktop {
+    @media only screen and (min-width: 1200px) {
+      @content;
+    }
+
+    // 1200px <= width
+  }
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter/static/Inter-Bold-slnt=0.ttf');
+  src: url('/fonts/Inter/static/Inter-Light-slnt=0.ttf');
+  src: url('/fonts/Inter/static/Inter-Medium-slnt=0.ttf');
+  src: url('/fonts/Inter/static/Inter-Regular-slnt=0.ttf');
+}
+
+@font-face {
+  font-family: 'ElleFutura';
+  src: url('/fonts/ElleFutura/static/ElleFutura-Bold.otf');
+}

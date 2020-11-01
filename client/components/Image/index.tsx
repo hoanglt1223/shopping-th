@@ -2,12 +2,14 @@ import cx from 'classnames'
 import { useState, useEffect } from 'react'
 import styles from './image.module.scss'
 
-interface IProps {
+interface IImageProps {
+  style?: string
   imageName?: string
   alt?: string
   src?: string
   isHalf?: boolean
   isQuarter?: boolean
+  className?: string
 }
 
 enum IMAGE_SIZE {
@@ -16,8 +18,8 @@ enum IMAGE_SIZE {
   QUARTER = '75'
 }
 
-const Image = (props: IProps) => {
-  const { imageName, alt, src = '', isHalf, isQuarter } = props
+const Image = (props: IImageProps) => {
+  const { imageName, alt, src = '', isHalf, isQuarter, className } = props
   const [source, setSource] = useState(src)
   const [isUsingFallback, setFallback] = useState(false)
 
@@ -47,7 +49,7 @@ const Image = (props: IProps) => {
   }
 
   return (
-    <div className={cx(styles.imageContainer)}>
+    <div className={cx(styles.imageContainer, className)}>
       <img src={source || `/assets/images/${imageName}`} alt={alt} onError={onError} />
     </div>
   )
