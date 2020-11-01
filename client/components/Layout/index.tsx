@@ -15,8 +15,8 @@ const Layout = (props: ILayoutProps) => {
   return (
     <div className={styles.layout}>
       <Head>
-        <title>{title || 'Cai Mep Container'}</title>
-        <link rel="icon" href="/favicon.png" />
+        <title>{title || 'Welcome to my Shop'}</title>
+        <link rel="icon" href="https://loopback.io/favicon.ico" />
       </Head>
       <Header borderLine={borderLine} leftSideComponent={headerTitle} />
       <Main>{children}</Main>
