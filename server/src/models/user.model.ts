@@ -30,6 +30,21 @@ export class User extends Entity {
   })
   lastName?: string;
 
+  @property({
+    type: 'string',
+  })
+  address?: string;
+
+  @property({
+    type: 'string',
+  })
+  phoneNumber?: string;
+
+  @property({
+    type: 'string',
+  })
+  name?: string;
+
   @hasMany(() => Order)
   orders: Order[];
 
