@@ -22,7 +22,7 @@ const Products = () => {
           <h4>{product.description}</h4>
           <h5>{product.detail}</h5>
           <p className="price">{product.price}</p>
-          <button className="cart-style-background" onClick={() => addItem(product)}>Add to cart</button>
+          <button className="cart-style-background" onClick={() => {addItem(product);console.log(product.productId)}}>Add to cart</button>
           <button className="cart-style-background" onClick={() => removeItem(product.id)} >Remove</button>
         </div>
       ))}

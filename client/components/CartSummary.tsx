@@ -26,6 +26,7 @@ const CartSummary = () => {
       '/api/checkout',
       cartDetails
     )
+    console.log(cartDetails)
 
     if (response.statusCode === 500) {
       console.error(response.message)

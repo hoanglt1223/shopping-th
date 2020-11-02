@@ -1,6 +1,6 @@
 import get from 'lodash/get'
 
-import { api, errorHandler } from 'API'
+import { api, auth, errorHandler } from 'API'
 import { ILoginDataReq, ILoginDataRes, IUser } from 'interfaces/user'
 import { IServerError } from 'interfaces/error'
 
@@ -18,6 +18,19 @@ export async function signUp(user: IUser): Promise<IUser> {
 export async function login(user: ILoginDataReq): Promise<ILoginDataRes> {
   try {
     const { data } = await api.post('/users/login', user)
+    return data
+  } catch (err) {
+    const error = get(err, 'response.data.error', '')
+    errorHandler(error)
+    throw error
+  }
+}
+
+export async function getUserId(): Promise<any> {
+  try {
+      const {data} = await api.get('/users/me',{
+        headers: auth()
+      })
     return data
   } catch (err) {
     const error = get(err, 'response.data.error', '')

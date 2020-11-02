@@ -32,9 +32,9 @@ export function errorHandler(error: IServerError) {
 }
 
 export function getAccessToken(): string {
-  return localStorage.getItem('accessToken') || ''
+  return localStorage.getItem('token') || ''
 }
 
 export function setAccessToken(token: string = '') {
-  localStorage.setItem('accessToken', token)
+  localStorage.setItem('token', token)
 }

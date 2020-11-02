@@ -31,7 +31,7 @@ class AppWrapper extends App {
         <button onClick={()=>Router.push(routes.login.value)}>Login</button>
         <button onClick={()=>Router.push(routes.signUp.value)}>SignUp</button>
         <button onClick={()=>Router.push(routes.shop.value)}>Shop</button>
-        <button onClick={()=>Router.push('https://shoppingth.herokuapp.com/api/explorer/')}>Api</button>
+        <button onClick={()=>Router.push('https://shoppingth.herokuapp.com/api/explorer')}>Api</button>
         </div>
       </Provider>
     )
