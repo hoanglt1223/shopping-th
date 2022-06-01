@@ -152,7 +152,7 @@
     "react-use": "^14.1.1",
     "reactstrap": "^8.4.1",
     "sass": "^1.26.3",
-    "sharp": "^0.26.1",
+    "sharp": "^0.30.5",
     "slick-carousel": "^1.8.1",
     "source-map-support": "^0.5.19",
     "swr": "^0.3.8-beta.2",
